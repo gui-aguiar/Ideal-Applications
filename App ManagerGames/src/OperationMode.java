@@ -2,8 +2,8 @@ public abstract class OperationMode {
 
 	Classifier classifier;
 	
-	public OperationMode(Classifier classificador) {
-		this.classifier = classificador;
+	public OperationMode(Classifier classifier) {
+		this.classifier = classifier;
 	}
 
 	public OperationMode() {
@@ -20,6 +20,10 @@ public abstract class OperationMode {
 
 	public void setClassificador(Classifier classificador) {
 		this.classifier = classificador; 
+	}
+
+	public void close() {
+		classifier.close();
 	}
 
 }

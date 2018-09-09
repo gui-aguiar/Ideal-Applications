@@ -22,4 +22,8 @@ public abstract class OperationMode {
 		this.classifier = classificador; 
 	}
 
+	public void close() {
+		classifier.close();
+	}
+
 }

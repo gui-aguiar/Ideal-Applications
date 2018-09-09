@@ -5,6 +5,7 @@ public class Classifier {
 	private ArrayList<Algorithm> algorithms;
 	private Algorithm currentAlgorithm;     
 	private DataDAO dataDAO;
+	private int[][] normalizedFeatures;
 	
 	public Classifier() {
 		algorithms = new  ArrayList<Algorithm>();
@@ -23,9 +24,9 @@ public class Classifier {
 		return this.currentAlgorithm;
 	}
 
-	public void saveAlgorithms() {
+	private void saveAlgorithms() {
 		for(Algorithm algorithm: algorithms){
-    		//algorithm.save;
+    		algorithm.save();
     	}
 	}
 
@@ -33,26 +34,32 @@ public class Classifier {
     	boolean fitResult = true;
     	this.loadData(featuresSize);
     	for(Algorithm algorithm: algorithms){
-    		fitResult = algorithm.fit(dataDAO.getFeatures(), dataDAO.getLabels()) && fitResult;
+    		fitResult = algorithm.fit(normalizedFeatures, dataDAO.getLabels()) && fitResult;
     	}
     	return fitResult;
 	}
     
 	private void loadData(int featuresSize) {		
-		dataDAO.load();       // a intençao esta em realmente ler os dados da parada? la do CSV, mas se aqui eu leio do CSV e normalizo, pq que eu tenho que fazer quando eu ja estou classificando?
+		dataDAO.load();
 		this.normalizeData();
 	}
 	
 	public void load() {
-		// aqui seria carregar o algoritnmo pronto. Seria apenas um classifier LOAD
+		for(Algorithm algorithm: algorithms){
+    		algorithm.read();
+    	}	
 	}
 
 	public void normalizeData() {
-		//throw new UnsupportedOperationException();
+		normalizedFeatures = dataDAO.getFeatures();
 	}
 
 	public int classify(int[] features) {
 	  return currentAlgorithm.predict(features);
+	}
+	
+	public void close() {
+		this.saveAlgorithms();
 	}
 
 }

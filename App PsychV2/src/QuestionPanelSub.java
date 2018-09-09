@@ -332,12 +332,6 @@ public class QuestionPanelSub extends QuestionPanel {
 		label_9.setBounds(514, 439, 81, 23);
 		add(label_9);
 	}
-
-	/*@Override
-	protected void sendData() {
-		// TODO Auto-generated method stub
-		
-	}*/
 	
 	public void setQuestionLabel(int index, String question) {
 		switch (index) {

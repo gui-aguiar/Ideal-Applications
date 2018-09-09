@@ -2,7 +2,6 @@ public abstract class Learn extends OperationMode {
 
 	public void initialize() {
 		addAlgorithms();
-		//train(classifier.featuresSize);
 	}
 	
 	public int classify(int[] features) {

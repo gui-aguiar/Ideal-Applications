@@ -1,15 +1,13 @@
 public class Inductor {
 
 	private OperationMode operationMode;
-	////Classificador classificador;
 	private int featuresSize;
 
 	public Inductor(int feturesSize) {
 		this.featuresSize = feturesSize;
-		//classificador = new Classificador();
 	}
 
-	public OperationMode getOperationMode() {
+	public OperationMode getModoOperacao() {
 		return this.operationMode;
 	}
 
@@ -18,12 +16,11 @@ public class Inductor {
 	}
 
 	public void run() {
-		//modoOperacao.setClassificador(classificador);
 		operationMode.initialize();
 	}
 
-	public boolean setAlgorithm(int index) {
-		return this.setAlgorithm(index);
+	public boolean setAlgorithmo(int index) {
+		return this.setAlgorithmo(index);
 	}
 
 	public int classify(int[] features) {
@@ -39,8 +36,7 @@ public class Inductor {
 	}
 
 	public void close() {
-		// TODO - implement Indutor.close
-		throw new UnsupportedOperationException();
+		operationMode.close();
 	}
 
 }

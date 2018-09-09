@@ -36,8 +36,7 @@ public class Inductor {
 	}
 
 	public void close() {
-		// TODO - implement Indutor.close
-		throw new UnsupportedOperationException();
+		operationMode.close();
 	}
 
 }

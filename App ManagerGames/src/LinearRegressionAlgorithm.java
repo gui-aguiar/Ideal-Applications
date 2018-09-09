@@ -65,5 +65,15 @@ public class LinearRegressionAlgorithm extends Algorithm {
 			return false;
 		}
 		return ((PerformanceDataLinearRegression) performanceData).setData(testModel);		 
+	}
+
+	@Override
+	public void save() {
+		// unimplemented for this application				
+	}
+
+	@Override
+	public void read() {
+		// unimplemented for this application		
 	}	
 }

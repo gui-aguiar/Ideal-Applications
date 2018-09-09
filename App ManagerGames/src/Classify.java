@@ -1,7 +1,7 @@
 public class Classify extends OperationMode {
 
 	public void initialize() {
-		classifier.loadData();		
+		classifier.load();		
 	}
 
 	public int classify(int[] features) {
@@ -13,7 +13,6 @@ public class Classify extends OperationMode {
 	}
 
 	public boolean train(int featuresSize) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -20,7 +20,7 @@ public abstract class QuestionPanel extends JPanel {
 	double[] data;
 	int index;
 	
-	double totalAmount;  // nao vai ser reaproveitado.
+	double totalAmount;
 	
 	public void setTotalAmount(double totalAmount2) {
 		this.totalAmount = totalAmount2;
@@ -115,7 +115,7 @@ public abstract class QuestionPanel extends JPanel {
 		    if (!this.isLastPanel) {
 		    	cardLayout.next(getParent());
 		    } else {
-		    	// enviar dados para o cara
+		    	
 		    }
 	    }	     
 	}

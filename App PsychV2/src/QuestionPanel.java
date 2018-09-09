@@ -109,7 +109,7 @@ public abstract class QuestionPanel extends JPanel {
 		    if (!this.isLastPanel) {
 		    	cardLayout.next(getParent());
 		    } else {
-		    	// enviar dados para o cara
+		    	
 		    }
 	    }	     
 	}

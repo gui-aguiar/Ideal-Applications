@@ -6,12 +6,10 @@ public abstract class DataDAO {
 	public abstract void load();
 
 	public void addLog(int[] features, int label) {
-		// TODO - implement DadosDAO.addLog
 		throw new UnsupportedOperationException();
 	}
 
-	public void delLog(int index) {
-		// TODO - implement DadosDAO.delLog
+	public void delLog(int index) {		
 		throw new UnsupportedOperationException();
 	}
 

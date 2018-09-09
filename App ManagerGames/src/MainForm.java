@@ -1,4 +1,6 @@
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import java.awt.Button;
 import java.awt.CardLayout;
 import java.awt.Font;
@@ -6,22 +8,68 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JTextArea;
 
 public class MainForm extends JFrame{
 
-	//private JFrame frame;
-	JTextArea intructions;
-	Label title;
-	int numberOfQuestionForms;
 	Panel mainPanel;
 	Panel questionPanelsPane;
-	Application applciation;
+	JTextArea intructions;
+	Label title;
+	
+	int numberOfQuestionForms;
+	int numberOfQuestions;
 	double[] dataToPredict;
 	double totalAmount = 100;
 	
+	Application application;
+	
+	
+	private static final long serialVersionUID = 1L;
+	
+	public static void main(String args[]) {
+		new MainForm();
+	}
+	
+	public MainForm () {
+		configureCloseAction();
+		defineDataInfo();
+		setInstrucionsPanelComponents();
+		setQuestionPanelsComponents();
+		checkNumberOfPages();
+		setFormInfo();	
+		runApplication();		
+	}
+	
+	private void configureCloseAction() {
+		this.addWindowListener(new java.awt.event.WindowAdapter() {
+		    @Override
+		    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+		       application.close();		       
+		    }
+		});
+	}
+		
+	private void defineDataInfo() {
+		this.setNumberOfQuestionForms(10);
+		this.setNumberOfQuestions(60);
+		dataToPredict = new double[this.getNumberOfQuestions()];
+	}
+
+	private void setFormInfo() {
+		this.setTitle("Teste de Personalidade");
+		this.setInstructions("Instruções: as seguintes afirma\u00E7\u00F5es dizem respeito \u00E0 sua percep\u00E7\u00E3o sobre voc\u00EA em uma variedade de situa\u00E7\u00F5es. Sua tarefa \u00E9 indicar a for\u00E7a do seu acordo com cada afirma\u00E7\u00E3o, utilizando uma escala em que 1 denota forte desacordo, 5 denota forte concord\u00E2ncia e 2, 3 e 4 representam julgamentos interm\u00E9dios. Nas caixas ap\u00F3s cada declara\u00E7\u00E3o, clique em um n\u00FAmero de 1 a 5 da seguinte escala:\r\n\r\n        Discordo fortemente\r\n        Discordar\r\n        Nem discorda nem concorda\r\n        Aceita\r\n        Concordo plenamente \r\n\r\nN\u00E3o h\u00E1 respostas \"corretas\" ou \"erradas\", ent\u00E3o selecione o n\u00FAmero que mais reflete em cada declara\u00E7\u00E3o. Tome seu tempo e considere cada declara\u00E7\u00E3o com cuidado. Depois de concluir todas as perguntas, clique em \"Enviar\" na parte inferior.");
+	}
+
+	private void runApplication() {
+		this.application = new Application();		
+		this.application.setNumberOfQuestionForms(this.getNumberOfQuestionForms());
+		this.application.setNumberOfQuestions(this.getNumberOfQuestions());
+	}
+   
 	public void setApplication(Application application) {
-		this.applciation = application;
+		this.application = application;
 	}
 
 	public int getNumberOfQuestionForms() {
@@ -30,17 +78,14 @@ public class MainForm extends JFrame{
 
 	public void setNumberOfQuestionForms(int numberOfQuestionForms) {
 		this.numberOfQuestionForms = numberOfQuestionForms;
-		checkNumberOfPages();
 	}
 
-	private static final long serialVersionUID = 1L;
-	
-	public MainForm (Application application) {
-		this.applciation = application;
-		dataToPredict = new double[application.getNumberOfQuestions()];
-		
-		setInstrucionsPanelComponents();
-		setQuestionPanelsComponents();
+	public int getNumberOfQuestions() {
+		return numberOfQuestions;
+	}
+
+	public void setNumberOfQuestions(int numberOfQuestions) {
+		this.numberOfQuestions = numberOfQuestions;
 	}
 
 	protected void setInstrucionsPanelComponents() {
@@ -197,13 +242,15 @@ public class MainForm extends JFrame{
 	
 	private void checkNumberOfPages() {
 		if (this.numberOfQuestionForms != questionPanelsPane.getComponentCount()) {
-			throw new UnsupportedOperationException();
+			JOptionPane.showMessageDialog(this, "Número de páginas criadas não está consistente com a definição da aplicação.",
+				    "Atenção", JOptionPane.ERROR_MESSAGE);
+			throw new UnsupportedOperationException("The number of pages configured doesnt match the configured");
 		}
 	}
 	
 	protected void startTest() {
-		if (applciation.getOperationMode() instanceof  Learn ) {
-			applciation.train();
+		if (application.getOperationMode() instanceof  Learn ) {
+			application.train();
 		} 
 
 	    mainPanel.setVisible(false);

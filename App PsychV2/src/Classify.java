@@ -13,7 +13,6 @@ public class Classify extends OperationMode {
 	}
 
 	public boolean train(int featuresSize) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

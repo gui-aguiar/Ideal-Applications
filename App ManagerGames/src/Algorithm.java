@@ -5,4 +5,7 @@ public abstract class Algorithm {
 
 	public abstract boolean fit(int[][] features, int[] labels);
 	
+	public abstract void save();
+
+	public abstract void read();	
 }

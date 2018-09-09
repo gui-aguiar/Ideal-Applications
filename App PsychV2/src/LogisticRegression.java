@@ -65,5 +65,16 @@ public class LogisticRegression extends Algorithm {
 			return false;
 		}
 		return ((PerformanceDataLogisticRegression) performanceData).setData(testModel);		 
+	}
+
+
+	@Override
+	public void save() {
+		// unimplemented for this application		
+	}
+
+	@Override
+	public void read() {
+		// unimplemented for this application
 	}	
 }
