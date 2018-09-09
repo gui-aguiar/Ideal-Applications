@@ -5,6 +5,7 @@ public class Classifier {
 	private ArrayList<Algorithm> algorithms;
 	private Algorithm currentAlgorithm;     
 	private DataDAO dataDAO;
+	private int[][] normalizedFeatures;
 	
 	public Classifier() {
 		algorithms = new  ArrayList<Algorithm>();
@@ -15,39 +16,50 @@ public class Classifier {
 		return algorithms;
 	}
 	
-	public void setCurrentAlgorithm(int currentAlgorithml) {
-		this.currentAlgorithm = this.algorithms.get(currentAlgorithml);
+	public void setCurrentAlgorithm(int currentAlgorithm) {
+		this.currentAlgorithm = this.algorithms.get(currentAlgorithm);
 	}
 
 	public Algorithm getCurrentAlgorithm() {
 		return this.currentAlgorithm;
 	}
 
-	public void saveAlgorithms() {
-		// TODO - implement Classificador.salvarAlgoritmos -- fazer um for e mandar cada um se salvar?
-		throw new UnsupportedOperationException();
+	private void saveAlgorithms() {
+		for(Algorithm algorithm: algorithms){
+    		algorithm.save();
+    	}
 	}
 
     public boolean train(int featuresSize) {
     	boolean fitResult = true;
-    	this.loadData();
-    	for(Algorithm algoritmo: algorithms){
-    		fitResult = algoritmo.fit(dataDAO.getFeatures(), dataDAO.getLabels()) && fitResult;
+    	this.loadData(featuresSize);
+    	for(Algorithm algorithm: algorithms){
+    		fitResult = algorithm.fit(normalizedFeatures, dataDAO.getLabels()) && fitResult;
     	}
     	return fitResult;
 	}
     
-	public void loadData() {		
+	private void loadData(int featuresSize) {		
 		dataDAO.load();
 		this.normalizeData();
 	}
+	
+	public void load() {
+		for(Algorithm algorithm: algorithms){
+    		algorithm.read();
+    	}	
+	}
 
 	public void normalizeData() {
-		throw new UnsupportedOperationException();
+		normalizedFeatures = dataDAO.getFeatures();
 	}
 
 	public int classify(int[] features) {
 	  return currentAlgorithm.predict(features);
+	}
+	
+	public void close() {
+		this.saveAlgorithms();
 	}
 
 }
