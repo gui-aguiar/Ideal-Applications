@@ -52,14 +52,14 @@ public class MainForm extends JFrame{
 	}
 		
 	private void defineDataInfo() {
-		this.setNumberOfQuestionForms(10);
-		this.setNumberOfQuestions(60);
+		this.setNumberOfQuestionForms(11);
+		this.setNumberOfQuestions(33);
 		dataToPredict = new double[this.getNumberOfQuestions()];
 	}
 
 	private void setFormInfo() {
-		this.setTitle("Teste de Personalidade");
-		this.setInstructions("Instruções: as seguintes afirma\u00E7\u00F5es dizem respeito \u00E0 sua percep\u00E7\u00E3o sobre voc\u00EA em uma variedade de situa\u00E7\u00F5es. Sua tarefa \u00E9 indicar a for\u00E7a do seu acordo com cada afirma\u00E7\u00E3o, utilizando uma escala em que 1 denota forte desacordo, 5 denota forte concord\u00E2ncia e 2, 3 e 4 representam julgamentos interm\u00E9dios. Nas caixas ap\u00F3s cada declara\u00E7\u00E3o, clique em um n\u00FAmero de 1 a 5 da seguinte escala:\r\n\r\n        Discordo fortemente\r\n        Discordar\r\n        Nem discorda nem concorda\r\n        Aceita\r\n        Concordo plenamente \r\n\r\nN\u00E3o h\u00E1 respostas \"corretas\" ou \"erradas\", ent\u00E3o selecione o n\u00FAmero que mais reflete em cada declara\u00E7\u00E3o. Tome seu tempo e considere cada declara\u00E7\u00E3o com cuidado. Depois de concluir todas as perguntas, clique em \"Enviar\" na parte inferior.");
+		this.setTitle("Jogo para gestores");
+		this.setInstructions("Instruções: De acordo com o cenário que foi apresentado pelo professor, você deve preencher os seguintes item de cada página com a quantidade de capital a ser investido. Cada item mostra o valor acumulado até então, sendo que o total não deverá exceder o valor estipulado pelo cenário. Os valores estão sendo considerados em mil reais.");
 	}
 
 	private void runApplication() {
