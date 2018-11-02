@@ -8,13 +8,19 @@ public class Application {
 
 	private Inductor inductor;
 
-    public Application() {
+    public Application(int numberOfQuestions) {
+    	this.numberOfQuestions = numberOfQuestions;
     	inductor = new Inductor(getNumberOfQuestions());
-		operationMode = new LogisticRegressionLearn();
+    	createOperationMode();
 		inductor.setOperationMode(operationMode);
 		
     	inductor.run();
 	}
+	
+    private void createOperationMode() {
+    	operationMode = new LogisticRegressionLearn(); 		
+	}
+	
 
     public OperationMode getOperationMode() {
 		return operationMode;
@@ -22,8 +28,9 @@ public class Application {
 
 	public void setOperationMode(OperationMode operationMode) {
 		this.operationMode = operationMode;
+		this.inductor.setOperationMode(operationMode);
 	}
-
+	
 	public int setNumberOfQuestionForms() {
 		return this.numberOfPages;
 	}

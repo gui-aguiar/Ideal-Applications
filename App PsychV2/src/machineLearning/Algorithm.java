@@ -5,7 +5,7 @@ public abstract class Algorithm {
 	
 	public abstract double predict(double[] features);
 
-	public abstract boolean fit(int[][] features, int[] labels);
+	public abstract boolean fit(double[][] features, double[] labels);
 	
 	public abstract void save();
 

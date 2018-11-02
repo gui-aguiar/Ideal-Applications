@@ -8,20 +8,26 @@ public class Application {
 
 	private Inductor inductor;
 
-    public Application() {
-    	inductor = new Inductor(getNumberOfQuestions());
-		operationMode = new LinearRegressionLearn();
+    public Application(int numberOfQuestions) {
+    	this.numberOfQuestions = numberOfQuestions;
+    	inductor = new Inductor(numberOfQuestions);
+		createOperationMode();
 		inductor.setOperationMode(operationMode);
 		
     	inductor.run();
 	}
 
+	private void createOperationMode() {
+		operationMode = new LinearRegressionLearn();	
+	}
+	
     public OperationMode getOperationMode() {
 		return operationMode;
 	}
 
 	public void setOperationMode(OperationMode operationMode) {
 		this.operationMode = operationMode;
+		this.inductor.setOperationMode(operationMode);
 	}
 
 	public int setNumberOfQuestionForms() {

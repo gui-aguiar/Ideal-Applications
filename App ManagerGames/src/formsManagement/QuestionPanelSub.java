@@ -25,7 +25,8 @@ public class QuestionPanelSub extends QuestionPanel {
 	private JFormattedTextField fttAccQuestion2;
 	private JFormattedTextField fttAccQuestion3;
 	
-	public QuestionPanelSub() {
+	public QuestionPanelSub(MainForm mainform) {
+		this.mainForm = mainform;
 		class ControlTextFieldsListenter implements DocumentListener {
             
 			public void refreshValues() throws ParseException {	
@@ -208,7 +209,7 @@ public class QuestionPanelSub extends QuestionPanel {
 	protected boolean checkAnswerRules() {
 		boolean validateValues = true;
 		if (this.isLastPanel) {
-			return false;
+			validateValues = false;
 		}
 		return validateValues;
 	}

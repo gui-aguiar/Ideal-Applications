@@ -6,13 +6,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.awt.Button;
 import java.awt.CardLayout;
-import java.awt.Panel;
 
 public abstract class QuestionPanel extends JPanel {
 			  
 	private static final long serialVersionUID = 1L;
-
-	Panel QuestionPanelContainer;
+	
+	public QuestionPanel(MainForm mainForm) {
+		this.mainForm = mainForm;
+	}
+	
 	CardLayout cardLayout;
 	boolean isFirstPanel;
 	boolean isLastPanel;
@@ -20,6 +22,7 @@ public abstract class QuestionPanel extends JPanel {
 	Button buttonNext;
 	double[] data;
 	int index;
+	MainForm mainForm;
 	
 	double totalAmount;
 	
@@ -58,14 +61,6 @@ public abstract class QuestionPanel extends JPanel {
 
 	public void setIsLastPanel(boolean isLastPanel) {
 		this.isLastPanel = isLastPanel;
-	}
-	
-	public Panel getQuestionPanelContainer() {
-		return QuestionPanelContainer;
-	}
-
-	public void setQuestionPanelContainer(Panel questionPanelContainer) {
-		QuestionPanelContainer = questionPanelContainer;
 	}
 
 	public QuestionPanel() {
@@ -116,7 +111,7 @@ public abstract class QuestionPanel extends JPanel {
 		    if (!this.isLastPanel) {
 		    	cardLayout.next(getParent());
 		    } else {
-		    	
+		    	this.mainForm.finish();
 		    }
 	    }	     
 	}

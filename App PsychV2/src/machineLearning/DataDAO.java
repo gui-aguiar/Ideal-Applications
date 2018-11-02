@@ -2,10 +2,10 @@ package machineLearning;
 
 public abstract class DataDAO {
 
-	protected int[][] features;
-	protected int[] labels;
+	protected double[][] features;
+	protected double[] labels;
 
-	public abstract void load();
+	public abstract double[][] load();
 
 	public void addLog(int[] features, int label) {
 		throw new UnsupportedOperationException();
@@ -15,19 +15,19 @@ public abstract class DataDAO {
 		throw new UnsupportedOperationException();
 	}
 
-	public int[][] getFeatures() {
+	public double[][] getFeatures() {
 		return features;
 	}
 
-	public void setFeatures(int[][] features) {
+	public void setFeatures(double[][] features) {
 		this.features = features;
 	}
 
-	public int[] getLabels() {
+	public double[] getLabels() {
 		return labels;
 	}
 
-	public void setLabels(int[] labels) {
+	public void setLabels(double[] labels) {
 		this.labels = labels;
 	}
 

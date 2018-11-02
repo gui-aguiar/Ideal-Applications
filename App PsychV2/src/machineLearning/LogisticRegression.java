@@ -10,10 +10,11 @@ import weka.core.Instances;
 public class LogisticRegression extends Algorithm {
 	RegressionByDiscretization discretRegression;
 	Instances myTrainingData; 
+	ArrayList<Attribute> attributes;
 	
 	@Override
-	public boolean fit(int[][] features, int[] labels) {
-		int[][] fitData = new int[features.length][features[0].length + 1];
+	public boolean fit(double[][] features, double[] labels) {
+		double[][] fitData = new double[features.length][features[0].length + 1];
 		for (int i = 0; i < features.length; i++) {
 			for (int j = 0; j < features[i].length; j++) {
 				fitData[i][j] = features[i][j];
@@ -21,7 +22,7 @@ public class LogisticRegression extends Algorithm {
 			fitData[i][fitData[0].length - 1] = labels[i];
 		}		
 		
-		ArrayList<Attribute> attributes = new ArrayList<Attribute>();
+		attributes = new ArrayList<Attribute>();
         for (int att = 0; att < fitData[0].length; att++) {
         	attributes.add(new Attribute("Attribute" + att, att));
         }
@@ -51,13 +52,18 @@ public class LogisticRegression extends Algorithm {
 	
 	
 	@Override
-	public double predict(double[] features) {
-	    DenseInstance dataToPredict = new DenseInstance(features.length);
+	public double predict(double[] features) {		
+		Instances dataUnlabeled = new Instances("Sample", attributes, 0);		
+		DenseInstance dataToPredict = new DenseInstance(features.length +1);
+		
 	    for (int i = 0; i < features.length; i++) { 
 	    	dataToPredict.setValue(i, features[i]);
-	    }		
-		try {
-			return discretRegression.getClassifier().classifyInstance(dataToPredict);
+	    }	
+	    dataToPredict.setValue(features.length , -1);
+	    try {
+			dataUnlabeled.add(dataToPredict);
+			dataUnlabeled.setClassIndex(dataUnlabeled.numAttributes() - 1);        					
+			return discretRegression.classifyInstance(dataUnlabeled.firstInstance());
 		} catch (Exception e) {			
 			e.printStackTrace();
 			return -1;

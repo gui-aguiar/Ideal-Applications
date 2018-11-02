@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import machineLearning.Application;
+import machineLearning.Classify;
 
 public class MainForm extends JFrame{
 
@@ -62,9 +63,9 @@ public class MainForm extends JFrame{
 	}
 
 	private void runApplication() {
-		this.application = new Application();		
+		this.application = new Application(this.getNumberOfQuestions());		
 		this.application.setNumberOfQuestionForms(this.getNumberOfQuestionForms());
-		this.application.setNumberOfQuestions(this.getNumberOfQuestions());
+		//this.application.setNumberOfQuestions(this.getNumberOfQuestions());
 	}
    
 	public void setApplication(Application application) {
@@ -136,7 +137,7 @@ public class MainForm extends JFrame{
 	}	
 
 	private void addQuestionPanels() {
-		QuestionPanelSub questionPanel1 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel1 = new QuestionPanelSub(this);
 		questionPanel1.setData(dataToPredict);
 		questionPanel1.setIsFirstPanel(true);
 		questionPanel1.setIndex(0);
@@ -148,7 +149,7 @@ public class MainForm extends JFrame{
 		questionPanel1.setQuestionLabel(5, "Geralmente, você não inicia conversas.");
 		questionPanel1.setQuestionLabel(6, "Você raramente faz alguma coisa por pura curiosidade.");
 		
-		QuestionPanelSub questionPanel2 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel2 = new QuestionPanelSub(this);
 		questionPanel2.setData(dataToPredict);
 		questionPanel2.setIndex(1);
 		questionPanelsPane.add("Questions2", questionPanel2);
@@ -159,7 +160,7 @@ public class MainForm extends JFrame{
 		questionPanel2.setQuestionLabel(5, "Você frequentemente sente que tem que se justificar para outras pessoas.");
 		questionPanel2.setQuestionLabel(6, "Seus ambientes doméstico e de trabalho são bem organizados.");
 		
-		QuestionPanelSub questionPanel3 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel3 = new QuestionPanelSub(this);
 		questionPanel3.setData(dataToPredict);
 		questionPanel3.setIndex(2);
 		questionPanelsPane.add("Questions3", questionPanel3);
@@ -170,7 +171,7 @@ public class MainForm extends JFrame{
 		questionPanel3.setQuestionLabel(5, "Frequentemente, é difícil para você se relacionar com os sentimentos das outras pessoas.");
 		questionPanel3.setQuestionLabel(6, "Seu humor pode mudar muito rapidamente.");
 		
-		QuestionPanelSub questionPanel4 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel4 = new QuestionPanelSub(this);
 		questionPanel4.setData(dataToPredict);
 		questionPanel4.setIndex(3);
 		questionPanelsPane.add("Questions4", questionPanel4);
@@ -181,7 +182,7 @@ public class MainForm extends JFrame{
 		questionPanel4.setQuestionLabel(5, "Um livro ou um vídeo game interessante é frequentemente melhor que um evento social.");
 		questionPanel4.setQuestionLabel(6, "Ser capaz de desenvolver um plano e manter-se firme na sua execução é a parte mais importante de todo projeto.");
 		
-		QuestionPanelSub questionPanel5 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel5 = new QuestionPanelSub(this);
 		questionPanel5.setData(dataToPredict);
 		questionPanel5.setIndex(4);
 		questionPanelsPane.add("Questions5", questionPanel5);
@@ -192,7 +193,7 @@ public class MainForm extends JFrame{
 		questionPanel5.setQuestionLabel(5, "Você não deixa outras pessoas influenciarem suas ações.");
 		questionPanel5.setQuestionLabel(6, "Seus sonhos têm a tendência de se concentrar no mundo real e seus eventos.");
 		
-		QuestionPanelSub questionPanel6 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel6 = new QuestionPanelSub(this);
 		questionPanel6.setData(dataToPredict);
 		questionPanel6.setIndex(5);
 		questionPanelsPane.add("Questions6", questionPanel6);
@@ -203,7 +204,7 @@ public class MainForm extends JFrame{
 		questionPanel6.setQuestionLabel(5, "Você frequentemente despende tempo explorando ideias irrealistas e impraticáveis, ainda que intrigantes.");
 		questionPanel6.setQuestionLabel(6, "Você prefere improvisar do que despender tempo para criar um plano detalhado.");
 		
-		QuestionPanelSub questionPanel7 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel7 = new QuestionPanelSub(this);
 		questionPanel7.setData(dataToPredict);
 		questionPanel7.setIndex(6);
 		questionPanelsPane.add("Questions7", questionPanel7);
@@ -214,7 +215,7 @@ public class MainForm extends JFrame{
 		questionPanel7.setQuestionLabel(5, "Manter suas opções em aberto é mais importante do que manter uma lista de afazeres.");
 		questionPanel7.setQuestionLabel(6, "Se seu amigo está triste por algum motivo, é mais provável que você ofereça apoio emocional do que sugestões para enfrentar o problema.");
 		
-		QuestionPanelSub questionPanel8 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel8 = new QuestionPanelSub(this);
 		questionPanel8.setData(dataToPredict);
 		questionPanel8.setIndex(7);
 		questionPanelsPane.add("Questions8", questionPanel8);
@@ -225,7 +226,7 @@ public class MainForm extends JFrame{
 		questionPanel8.setQuestionLabel(5, "Você se sente com mais energia após despender tempo com um grupo de pessoas.");
 		questionPanel8.setQuestionLabel(6, "Você perde suas coisas com frequência.");
 		
-		QuestionPanelSub questionPanel9 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel9 = new QuestionPanelSub(this);
 		questionPanel9.setData(dataToPredict);
 		questionPanel9.setIndex(8);
 		questionPanelsPane.add("Questions9", questionPanel9);
@@ -236,7 +237,7 @@ public class MainForm extends JFrame{
 		questionPanel9.setQuestionLabel(5, "Falando de modo geral, você confia mais em sua experiência do que em sua imaginação.");
 		questionPanel9.setQuestionLabel(6, "Você se preocupa demais com o que as outras pessoas pensam.");
 		
-		QuestionPanelSub questionPanel10 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel10 = new QuestionPanelSub(this);
 		questionPanel10.setData(dataToPredict);
 		questionPanel10.setIsLastPanel(true);
 		questionPanel10.setIndex(9);
@@ -259,7 +260,11 @@ public class MainForm extends JFrame{
 	
 	protected void startTest() {
 		if (application.getOperationMode() instanceof  machineLearning.Learn ) {
-			application.train();
+			if (application.train()) {
+				Classify classify = new Classify();
+				classify.setClassifier((application.getOperationMode().getClassifier()));
+				application.setOperationMode(classify);
+			}
 		} 
 
 	    mainPanel.setVisible(false);

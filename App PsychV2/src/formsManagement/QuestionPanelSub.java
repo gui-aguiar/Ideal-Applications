@@ -27,7 +27,9 @@ public class QuestionPanelSub extends QuestionPanel {
 	private JTextArea txtrQuestion5;
 	private JTextArea txtrQuestion6;
 
-	public QuestionPanelSub() {
+	public QuestionPanelSub(MainForm mainForm) {
+		this.mainForm = mainForm;
+		
 		buttonGroupList = new  ArrayList<ButtonGroup>();
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("");
@@ -55,15 +57,15 @@ public class QuestionPanelSub extends QuestionPanel {
 		radioButton_2.setBounds(341, 66, 21, 23);
 		add(radioButton_2);
 		
-		JRadioButton radioButton_3 = new JRadioButton("");
-		buttonGroupQuestion1.add(radioButton_3);
-		radioButton_3.setBounds(453, 66, 21, 23);
-		add(radioButton_3);
-		
 		JRadioButton radioButton_4 = new JRadioButton("");
 		buttonGroupQuestion1.add(radioButton_4);
-		radioButton_4.setBounds(390, 66, 21, 23);
+		radioButton_4.setBounds(453, 66, 21, 23);
 		add(radioButton_4);
+		
+		JRadioButton radioButton_3 = new JRadioButton("");
+		buttonGroupQuestion1.add(radioButton_3);
+		radioButton_3.setBounds(390, 66, 21, 23);
+		add(radioButton_3);
 		
 		buttonGroupList.add(buttonGroupQuestion1);
 		
@@ -100,17 +102,17 @@ public class QuestionPanelSub extends QuestionPanel {
 		radioButton_9.setBounds(341, 141, 21, 23);
 		add(radioButton_9);
 		
-		JRadioButton radioButton_10 = new JRadioButton("");
-		buttonGroupQuestion2.add(radioButton_10);
-		radioButton_10.setBounds(453, 141, 21, 23);
-		add(radioButton_10);
-		
 		JRadioButton radioButton_11 = new JRadioButton("");
 		buttonGroupQuestion2.add(radioButton_11);
-		radioButton_11.setBounds(390, 141, 21, 23);
+		radioButton_11.setBounds(453, 141, 21, 23);
 		add(radioButton_11);
 		
 		buttonGroupList.add(buttonGroupQuestion2);
+		
+		JRadioButton radioButton_10 = new JRadioButton("");
+		buttonGroupQuestion2.add(radioButton_10);
+		radioButton_10.setBounds(390, 141, 21, 23);
+		add(radioButton_10);
 		
 		JLabel label_1 = new JLabel("Concordo");
 		label_1.setBounds(58, 141, 62, 23);
@@ -157,19 +159,19 @@ public class QuestionPanelSub extends QuestionPanel {
 		radioButton_15.setBounds(289, 216, 21, 23);
 		add(radioButton_15);
 		
+		JRadioButton radioButton_17 = new JRadioButton("");
+		buttonGroupQuestion3.add(radioButton_17);
+		radioButton_17.setBounds(390, 216, 21, 23);
+		add(radioButton_17);
+		
 		JRadioButton radioButton_16 = new JRadioButton("");
 		buttonGroupQuestion3.add(radioButton_16);
 		radioButton_16.setBounds(341, 216, 21, 23);
 		add(radioButton_16);
 		
-		JRadioButton radioButton_17 = new JRadioButton("");
-		buttonGroupQuestion3.add(radioButton_17);
-		radioButton_17.setBounds(453, 216, 21, 23);
-		add(radioButton_17);
-		
 		JRadioButton radioButton_18 = new JRadioButton("");
 		buttonGroupQuestion3.add(radioButton_18);
-		radioButton_18.setBounds(390, 216, 21, 23);
+		radioButton_18.setBounds(453, 216, 21, 23);
 		add(radioButton_18);
 		
 		buttonGroupList.add(buttonGroupQuestion3);

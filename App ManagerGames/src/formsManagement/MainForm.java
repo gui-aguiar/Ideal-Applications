@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JTextArea;
 import machineLearning.Application;
+import machineLearning.Classify;
 
 public class MainForm extends JFrame{
 
@@ -63,9 +64,9 @@ public class MainForm extends JFrame{
 	}
 
 	private void runApplication() {
-		this.application = new Application();		
+		this.application = new Application(this.getNumberOfQuestions());		
 		this.application.setNumberOfQuestionForms(this.getNumberOfQuestionForms());
-		this.application.setNumberOfQuestions(this.getNumberOfQuestions());
+		//this.application.setNumberOfQuestions(this.getNumberOfQuestions());
 	}
    
 	public void setApplication(Application application) {
@@ -137,7 +138,7 @@ public class MainForm extends JFrame{
 	}	
 
 	private void addQuestionPanels() {
-		QuestionPanelSub questionPanel1 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel1 = new QuestionPanelSub(this);
 		questionPanel1.setData(dataToPredict);
 		questionPanel1.setIsFirstPanel(true);
 		questionPanel1.setIndex(0);
@@ -148,7 +149,7 @@ public class MainForm extends JFrame{
 		questionPanel1.setQuestionLabel(3, "O bom desempenho operacional possibilita melhores resultados sobre produtos, processos e prazos. Obtidos através da avaliação dos processos vigentes e garantindo agilidade.");
 		questionPanel1.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel2 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel2 = new QuestionPanelSub(this);
 		questionPanel2.setData(dataToPredict);
 		questionPanel1.setIndex(1);
 		questionPanelsPane.add("Questions2", questionPanel2);
@@ -158,7 +159,7 @@ public class MainForm extends JFrame{
 		questionPanel2.setQuestionLabel(3, "O desenvolvimento de novos produtos tem relação com facilidades no processo, produtos determinantes na construção da imagem da organização, e melhoria da qualidade do produto");
 		questionPanel2.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel3 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel3 = new QuestionPanelSub(this);
 		questionPanel3.setData(dataToPredict);
 		questionPanel1.setIndex(2);
 		questionPanelsPane.add("Questions3", questionPanel3);
@@ -168,7 +169,7 @@ public class MainForm extends JFrame{
 		questionPanel3.setQuestionLabel(3, "As pessoas raramente conseguem aborrecê-lo.A organização deve dispor de equipamentos e tecnologias que apresentem um bom desempenho, ou seja, confiáveis.  O que permite estabilidade e qualidade no processo produtivo. E ainda, agilidade na execução das tarefas, tornando-as mais rápidas");
 		questionPanel3.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel4 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel4 = new QuestionPanelSub(this);
 		questionPanel4.setData(dataToPredict);
 		questionPanel1.setIndex(3);
 		questionPanelsPane.add("Questions4", questionPanel4);
@@ -178,7 +179,7 @@ public class MainForm extends JFrame{
 		questionPanel4.setQuestionLabel(3, "Ambientes adequados colaboram para a produção, a boa localização, manutenção e layout influenciam o processo garantindo rapidez e qualidade tanto na produção quanto no atendimento do cliente");
 		questionPanel4.setTotalAmount(totalAmount);
 	
-		QuestionPanelSub questionPanel5 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel5 = new QuestionPanelSub(this);
 		questionPanel5.setData(dataToPredict);
 		questionPanel1.setIndex(4);
 		questionPanelsPane.add("Questions5", questionPanel5);
@@ -188,7 +189,7 @@ public class MainForm extends JFrame{
 		questionPanel5.setQuestionLabel(3, "A estrutura da empresa deve ser segura e confiável para investigar e minimizar potenciais acidentes causadores de danos ambientais. Para tanto, deve haver treinamento e melhoria constante dos processos a fim de contribuir para o meio ambiente.");
 		questionPanel5.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel6 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel6 = new QuestionPanelSub(this);
 		questionPanel6.setData(dataToPredict);
 		questionPanel1.setIndex(5);
 		questionPanelsPane.add("Questions6", questionPanel6);
@@ -198,7 +199,7 @@ public class MainForm extends JFrame{
 		questionPanel6.setQuestionLabel(3, "Investimentos em bons equipamentos e no desenvolvimento dos colaboradores permitem desempenhos produtivos apropriados, aprimoram tarefas, melhorando a qualidade total da organização e acelerando o processo produtivo.");
 		questionPanel6.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel7 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel7 = new QuestionPanelSub(this);
 		questionPanel7.setData(dataToPredict);
 		questionPanel1.setIndex(6);
 		questionPanelsPane.add("Questions7", questionPanel7);
@@ -208,7 +209,7 @@ public class MainForm extends JFrame{
 		questionPanel7.setQuestionLabel(3, "través da cultura organizacional transmite-se aos colaboradores e aos clientes potenciais valores da organização. O que contribui aos aspectos de confiabilidade e eficiência e agilidade no processo ao constatarem e absorver as técnicas e atividades adequadas a serem utilizadas.");
 		questionPanel7.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel8 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel8 = new QuestionPanelSub(this);
 		questionPanel8.setData(dataToPredict);
 		questionPanel1.setIndex(7);
 		questionPanelsPane.add("Questions8", questionPanel8);
@@ -218,7 +219,7 @@ public class MainForm extends JFrame{
 		questionPanel8.setQuestionLabel(3, "Fazem com que a organização ajuste sua produção por meio de planos operacionais que permitem maior previsibilidade do processo produtivo; do controle que permite que a organização tenha informações constantes a respeito do desenvolvimento de produtos; e da programação da produção que organiza as operações em uma sequência ótima.");
 		questionPanel8.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel9 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel9 = new QuestionPanelSub(this);
 		questionPanel9.setData(dataToPredict);
 		questionPanel1.setIndex(8);
 		questionPanelsPane.add("Questions9", questionPanel9);
@@ -228,7 +229,7 @@ public class MainForm extends JFrame{
 		questionPanel9.setQuestionLabel(3, "Você não se chamaria de sonhadorO cuidado com a saúde e segurança dos profissionais propicia um ambiente produtivo estável, influenciando positivamente na motivação do trabalhador, propiciando condições para melhores resultados na produção.");
 		questionPanel9.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel10 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel10 = new QuestionPanelSub(this);
 		questionPanel10.setData(dataToPredict);
 		questionPanel1.setIndex(9);
 		questionPanelsPane.add("Questions10", questionPanel10);
@@ -238,7 +239,7 @@ public class MainForm extends JFrame{
 		questionPanel10.setQuestionLabel(3, "Sua eficiência é garantida através do acoplamento das etapas, conhecimento (domínio) dos tempos de ciclo no decorrer do processo, acompanhamento do ciclo completo, garantindo um processo produtivo rápido (Tempos de Ciclo curtos) ou a padrões de tempo entendidos como adequados.");
 		questionPanel10.setTotalAmount(totalAmount);
 		
-		QuestionPanelSub questionPanel11 = new QuestionPanelSub();
+		QuestionPanelSub questionPanel11 = new QuestionPanelSub(this);
 		questionPanel11.setData(dataToPredict);
 		questionPanel1.setIndex(10);
 		questionPanel11.setIsLastPanel(true);
@@ -260,7 +261,11 @@ public class MainForm extends JFrame{
 	
 	protected void startTest() {
 		if (application.getOperationMode() instanceof  machineLearning.Learn ) {
-			application.train();
+			if (application.train()) {
+				Classify classify = new Classify();
+				classify.setClassifier((application.getOperationMode().getClassifier()));
+				application.setOperationMode(classify);
+			}
 		} 
 
 	    mainPanel.setVisible(false);

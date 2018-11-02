@@ -21,10 +21,6 @@ public class Inductor {
 		operationMode.initialize();
 	}
 
-	public boolean setAlgorithmo(int index) {
-		return this.setAlgorithmo(index);
-	}
-
 	public double classify(double[] features) {
 		return operationMode.classify(features);
 	}

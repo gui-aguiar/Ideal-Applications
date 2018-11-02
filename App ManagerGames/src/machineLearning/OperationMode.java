@@ -20,8 +20,12 @@ public abstract class OperationMode {
 
 	public abstract boolean train(int featuresSize);
 
-	public void setClassificador(Classifier classificador) {
-		this.classifier = classificador; 
+	public Classifier getClassifier() {
+		return classifier;
+	}
+
+	public void setClassifier(Classifier classifier) {
+		this.classifier = classifier;
 	}
 
 	public void close() {

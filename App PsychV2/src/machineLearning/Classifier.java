@@ -7,10 +7,14 @@ public class Classifier {
 	private ArrayList<Algorithm> algorithms;
 	private Algorithm currentAlgorithm;     
 	private DataDAO dataDAO;
-	private int[][] normalizedFeatures;
+	private double[][] normalizedFeatures;
 	
 	public Classifier() {
 		algorithms = new  ArrayList<Algorithm>();
+		createDataDAO();
+	}
+
+	private void createDataDAO() {
 		dataDAO = new DataDAOCSV("DadosAplicacaoPsicologica.csv");
 	}
 		
@@ -38,6 +42,7 @@ public class Classifier {
     	for(Algorithm algorithm: algorithms){
     		fitResult = algorithm.fit(normalizedFeatures, dataDAO.getLabels()) && fitResult;
     	}
+    	setCurrentAlgorithm(0);
     	return fitResult;
 	}
     
@@ -53,7 +58,16 @@ public class Classifier {
 	}
 
 	public void normalizeData() {
-		normalizedFeatures = dataDAO.getFeatures();
+		int minValue = 1;
+		int maxValue = 7;
+		
+		double [][] rawData = dataDAO.getFeatures();
+		normalizedFeatures = new double[rawData.length][rawData[0].length];
+		for (int i = 0; i < rawData.length; i++) {
+			for (int j = 0; j < rawData[0].length; j++ ) {
+				normalizedFeatures[i][j] = ((rawData[i][j] - minValue) / (maxValue - minValue));
+			}
+		}
 	}
 
 	public double classify(double[] features) {
