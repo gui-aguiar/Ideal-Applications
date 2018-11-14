@@ -2,13 +2,13 @@ package machineLearning;
 
 import java.util.ArrayList;
 import weka.classifiers.Evaluation;
-import weka.classifiers.functions.LinearRegression;
+import weka.classifiers.functions.SimpleLinearRegression;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instances;
 
 public class LinearRegressionAlgorithm extends Algorithm {
-	LinearRegression linearRegression;
+	SimpleLinearRegression linearRegression;
 	Instances myTrainingData; 
 	ArrayList<Attribute> attributes;
 	
@@ -38,7 +38,7 @@ public class LinearRegressionAlgorithm extends Algorithm {
         	myTrainingData.add(trainingExample);    
         }      
                
-        linearRegression = new LinearRegression();
+        linearRegression = new SimpleLinearRegression();
         try {
         	linearRegression.buildClassifier(myTrainingData);
       	
@@ -49,7 +49,6 @@ public class LinearRegressionAlgorithm extends Algorithm {
 		}              
         return SetPerformanceData();             
 	}
-	
 	
 	@Override
 	public double predict(double[] features) {

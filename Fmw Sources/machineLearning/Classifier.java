@@ -48,7 +48,9 @@ public class Classifier {
 	}
     
 	private void loadData(int featuresSize) {		
-		dataDAO.load();
+		if (dataDAO.load()[0].length != featuresSize) {
+			throw new Error("Provided data doesn match with the appications configuratiosns.");
+		}
 		this.normalizeData();
 	}
 	
